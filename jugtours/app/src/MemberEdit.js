@@ -6,9 +6,9 @@ import AppNavbar from './AppNavbar';
 class MemberEdit extends Component {
 
     emptyItem = {
-        user_name: '',
-        email: '',
-        password: ''
+        name: '',
+        uemail: '',
+        upw: ''
     };
 
     constructor(props) {
@@ -62,17 +62,17 @@ class MemberEdit extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="user_name">Name</Label>
-                        <Input type="text" name="uid" id="user_name" value={item.user_name || ''}
-                               onChange={this.handleChange} autoComplete="user_name"/>
+                        <Input type="text" name="name" id="user_name" value={item.name || ''}
+                               onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">email</Label>
-                        <Input type="text" name="uemail" id="email" value={item.email || ''}
+                        <Input type="text" name="uemail" id="email" value={item.uemail || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">password</Label>
-                        <Input type="text" name="upw" id="password" value={item.password || ''}
+                        <Input type="text" name="upw" id="password" value={item.upw || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <FormGroup>
