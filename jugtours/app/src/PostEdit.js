@@ -69,12 +69,12 @@ class PostEdit extends Component {
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="address">groupname</Label>
+                        <Label for="groupname">groupname</Label>
                         <Input type="text" name="groupname" id="groupname" value={item.groupname || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="city">content</Label>
+                        <Label for="content">content</Label>
                         <Input type="text" name="content" id="content" value={item.content || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>

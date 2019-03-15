@@ -41,7 +41,7 @@ class PostController {
     ResponseEntity<Post> createPost(@Valid @RequestBody Post post) throws URISyntaxException {
         log.info("Request to create post: {}", post);
         Post result = postRepository.save(post);
-        return ResponseEntity.created(new URI("/api2/post/" + result.getId()))
+        return ResponseEntity.created(new URI("/api/post/" + result.getId()))
                 .body(result);
     }
 
@@ -58,4 +58,5 @@ class PostController {
         postRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 }
