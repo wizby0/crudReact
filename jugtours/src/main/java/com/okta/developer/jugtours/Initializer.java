@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Component
@@ -76,6 +77,31 @@ class Initializer implements CommandLineRunner {
         repository3.save(new Member("11134","wooju","1234","1Email@email"));
         repository3.save(new Member("22134","cosmos","1234","2Email@email"));
         repository3.save(new Member("33134","universe","1234","3Email@email"));
+
+        Member wooju = repository3.findByName("wooju");
+        MemberRole r1 = MemberRole.builder()
+                .rno((long)1)
+                .roleName("ADMIN")
+                .build();
+        wooju.setRoles(Collections.singletonList(r1));
+        repository3.save(wooju);
+
+        Member cosmos = repository3.findByName("cosmos");
+        MemberRole r2 = MemberRole.builder()
+                .rno((long) 2)
+                .roleName("MASTER")
+                .build();
+        cosmos.setRoles(Collections.singletonList(r2));
+        repository3.save(cosmos);
+
+        Member universe = repository3.findByName("universe");
+        MemberRole r3 = MemberRole.builder()
+                .rno((long)3)
+                .roleName("SUPERVISER")
+                .build();
+        universe.setRoles(Collections.singletonList(r3));
+        repository3.save(universe);
+
 
 //        Stream.of("Denver member","Utah member").forEach(name ->
 //                repository3.save(new Member(name)));

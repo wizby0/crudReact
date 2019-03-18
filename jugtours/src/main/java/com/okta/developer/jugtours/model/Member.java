@@ -45,6 +45,7 @@ public class Member {
 
 
     public Member(String uid, String name, String password, String email) {
+
         this.uid = uid;
         this.name = name;
         this.upw = password;

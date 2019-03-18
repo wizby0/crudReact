@@ -40,12 +40,13 @@ class MemberList extends Component {
         }
 
         const memberList = members.map(member => {
-
             return <tr key={member.id}>
+                <td style={{whiteSpace: 'nowrap'}}>{member.uid}</td>
                 <td style={{whiteSpace: 'nowrap'}}>{member.name}</td>
-                <td>{member.name}</td>
-                <td>{member.password}</td>
-                <td>{member.email}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{member.uemail}</td>
+
+                <td style={{whiteSpace: 'nowrap'}}>{member.roles[0].roleName} </td>
+                <td style={{whiteSpace: 'nowrap'}}>{member.updatedate}</td>
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link} to={"/members/" + member.id}>Edit</Button>
@@ -66,10 +67,11 @@ class MemberList extends Component {
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="20%">id</th>
-                            <th width="20%">name</th>
-                            <th>Events</th>
-                            <th width="10%">Password</th>
+                            <th width="20%">ID</th>
+                            <th width="20%">NAME</th>
+                            <th width="20%">EMAIL</th>
+                            <th>ROELS</th>
+                            <th width="10%">UPDATEDATE</th>
                         </tr>
                         </thead>
                         <tbody>

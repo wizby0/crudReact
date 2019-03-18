@@ -6,6 +6,7 @@ import AppNavbar from './AppNavbar';
 class MemberEdit extends Component {
 
     emptyItem = {
+        uid: '',
         name: '',
         uemail: '',
         upw: ''
@@ -61,9 +62,14 @@ class MemberEdit extends Component {
                 {title}
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
+                        <Label for="user_id">Id</Label>
+                        <Input type="text" name="uid" id="user_id" value={item.uid || ''}
+                               onChange={this.handleChange} autoComplete="name"/>
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="user_name">Name</Label>
                         <Input type="text" name="name" id="user_name" value={item.name || ''}
-                               onChange={this.handleChange} autoComplete="name"/>
+                               onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="email">email</Label>

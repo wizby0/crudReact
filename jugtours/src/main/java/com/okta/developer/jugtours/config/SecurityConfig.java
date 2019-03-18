@@ -11,14 +11,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     public void configure(WebSecurity web) throws Exception
     {
-        web.ignoring().antMatchers("/**");
+        web.ignoring().antMatchers("/css/**","script/**","image/**","/api/**");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
                 .antMatchers("/mypage/**").authenticated()
-                .antMatchers("/admin/**").access("ROLE_ADMIN")
-                .antMatchers("/**").permitAll();
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/**").permitAll();
     }
 }
