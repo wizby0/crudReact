@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findByName(String name);
+
+    Member findByUemail(String email);
 }
 
 //import org.springframework.data.repository.CrudRepository;

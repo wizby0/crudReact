@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import AppNavbar from './AppNavbar';
+import AppNavbar from '../AppNavbar';
 
-class GroupEdit extends Component {
+class PostEdit extends Component {
 
     emptyItem = {
         name: '',
-        address: '',
-        city: '',
-        stateOrProvince: '',
-        country: '',
-        postalCode: ''
+        groupname: '',
+        content: '',
+        headline: '',
+        comment: '',
+        contpassword: ''
     };
 
     constructor(props) {
@@ -25,8 +25,8 @@ class GroupEdit extends Component {
 
     async componentDidMount() {
         if (this.props.match.params.id !== 'new') {
-            const group = await (await fetch(`/api/group/${this.props.match.params.id}`)).json();
-            this.setState({item: group});
+            const post = await (await fetch(`/api/post/${this.props.match.params.id}`)).json();
+            this.setState({item: post});
         }
     }
 
@@ -43,7 +43,7 @@ class GroupEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/api/group', {
+        await fetch('/api/post', {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -51,12 +51,12 @@ class GroupEdit extends Component {
             },
             body: JSON.stringify(item),
         });
-        this.props.history.push('/groups');
+        this.props.history.push('/posts');
     }
 
     render() {
         const {item} = this.state;
-        const title = <h2>{item.id ? 'Edit Group' : 'Add Group'}</h2>;
+        const title = <h2>{item.id ? 'Edit Post' : 'Add Post'}</h2>;
 
         return <div>
             <AppNavbar/>
@@ -69,35 +69,35 @@ class GroupEdit extends Component {
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="address">Address</Label>
-                        <Input type="text" name="address" id="address" value={item.address || ''}
+                        <Label for="groupname">groupname</Label>
+                        <Input type="text" name="groupname" id="groupname" value={item.groupname || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="city">City</Label>
-                        <Input type="text" name="city" id="city" value={item.city || ''}
+                        <Label for="content">content</Label>
+                        <Input type="text" name="content" id="content" value={item.content || ''}
                                onChange={this.handleChange} autoComplete="address-level1"/>
                     </FormGroup>
                     <div className="row">
                         <FormGroup className="col-md-4 mb-3">
-                            <Label for="stateOrProvince">State/Province</Label>
-                            <Input type="text" name="stateOrProvince" id="stateOrProvince" value={item.stateOrProvince || ''}
+                            <Label for="headline">headline</Label>
+                            <Input type="text" name="headline" id="headline" value={item.headline || ''}
                                    onChange={this.handleChange} autoComplete="address-level1"/>
                         </FormGroup>
                         <FormGroup className="col-md-5 mb-3">
-                            <Label for="country">Country</Label>
-                            <Input type="text" name="country" id="country" value={item.country || ''}
+                            <Label for="comment">comment</Label>
+                            <Input type="text" name="comment" id="comment" value={item.comment || ''}
                                    onChange={this.handleChange} autoComplete="address-level1"/>
                         </FormGroup>
                         <FormGroup className="col-md-3 mb-3">
-                            <Label for="country">Postal Code</Label>
-                            <Input type="text" name="postalCode" id="postalCode" value={item.postalCode || ''}
+                            <Label for="contpassword">contpassword</Label>
+                            <Input type="text" name="contpassword" id="contpassword" value={item.contpassword || ''}
                                    onChange={this.handleChange} autoComplete="address-level1"/>
                         </FormGroup>
                     </div>
                     <FormGroup>
                         <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" tag={Link} to="/groups">Cancel</Button>
+                        <Button color="secondary" tag={Link} to="/posts">Cancel</Button>
                     </FormGroup>
                 </Form>
             </Container>
@@ -105,4 +105,4 @@ class GroupEdit extends Component {
     }
 }
 
-export default withRouter(GroupEdit);
+export default withRouter(PostEdit);
